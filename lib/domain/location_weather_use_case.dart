@@ -47,6 +47,14 @@ class LocationWeatherUseCase {
       return placeLocation;
     }
 
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
     final position = await Geolocator.getCurrentPosition();
     final latitude = position.latitude;
     final longitude = position.longitude;
