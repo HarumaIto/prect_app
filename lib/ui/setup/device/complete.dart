@@ -1,5 +1,5 @@
 import 'package:prect/data/model/prect_device.dart';
-import 'package:prect/ui/common_widget/page_inner_title.dart';
+import 'package:prect/ui/components/page_inner_title.dart';
 import 'package:flutter/material.dart';
 
 class Complete extends StatelessWidget {

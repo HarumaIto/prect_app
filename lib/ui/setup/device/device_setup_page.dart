@@ -1,4 +1,4 @@
-import 'package:prect/ui/common_widget/primary_button.dart';
+import 'package:prect/ui/components/primary_button.dart';
 import 'package:prect/ui/setup/device/complete.dart';
 import 'package:prect/ui/setup/device/connect_check.dart';
 import 'package:prect/ui/setup/device/introduction.dart';
