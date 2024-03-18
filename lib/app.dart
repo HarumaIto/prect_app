@@ -41,7 +41,7 @@ class MyApp extends HookConsumerWidget {
             return const MainPage();
           }
           else {
-            return SingInPage();
+            return const SingInPage();
           }
         },
         error: (error, stack) => Center(
