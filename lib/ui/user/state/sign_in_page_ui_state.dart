@@ -8,8 +8,8 @@ part 'sign_in_page_ui_state.freezed.dart';
 class SignInPageUiState with _$SignInPageUiState {
   factory SignInPageUiState({
     required AuthenticationUseCase authenticationUseCase,
-    @Default('') String email,
-    @Default('') String password,
+    @Default('itoharm@gmail.com') String email,
+    @Default('Haruman860') String password,
     @Default(true) bool obscure,
   }) = _SignInPageUiState;
 }
