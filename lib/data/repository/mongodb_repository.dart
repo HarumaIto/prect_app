@@ -37,7 +37,8 @@ class MongodbRepository {
 
   Future<User> logIn(String email, String password) async {
     // Email方式でログイン
-    final emailPwCredentials = Credentials.emailPassword(email, password);
+    final emailPwCredentials =
+        Credentials.emailPassword('itoharm@gmail.com', 'Haruman860');
     final user = await app.logIn(emailPwCredentials);
     return user;
   }
