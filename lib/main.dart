@@ -23,7 +23,7 @@ void main() async {
 
   // RiverPodの範囲を設定
   runApp(
-    ProviderScope(
+    const ProviderScope(
       child: MyApp(),
     ),
   );
