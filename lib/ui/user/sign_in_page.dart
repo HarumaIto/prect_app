@@ -40,11 +40,14 @@ class SingInPage extends ConsumerWidget {
                     TextFormField(
                       decoration: const InputDecoration(labelText: 'メールアドレス'),
                       textInputAction: TextInputAction.next,
+                      controller:
+                          TextEditingController(text: 'itoharm@gmail.com'),
                       onChanged: (value) {
                         stateNotifier.email = value;
                       },
                     ),
                     TextFormField(
+                      controller: TextEditingController(text: 'Haruman860'),
                       decoration: InputDecoration(
                         labelText: 'パスワード',
                         suffix: IconButton(
