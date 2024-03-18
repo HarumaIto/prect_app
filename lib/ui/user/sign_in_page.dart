@@ -10,11 +10,9 @@ class SingInPage extends ConsumerWidget {
 
   void _transitionMainPage(BuildContext context) {
     // 画面遷移 + ログイン画面を廃棄
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) {
-          return const MainPage();
-        })
-    );
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
+      return const MainPage();
+    }));
   }
 
   @override
@@ -33,7 +31,9 @@ class SingInPage extends ConsumerWidget {
                 'ようこそ！',
                 style: TextStyle(fontSize: 32),
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(
+                height: 16,
+              ),
               Form(
                 child: Column(
                   children: [
@@ -80,11 +80,10 @@ class SingInPage extends ConsumerWidget {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) {
-                          return const AccountCreatePage();
-                        })
-                    );
+                    Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (context) {
+                      return const AccountCreatePage();
+                    }));
                   },
                   child: const Row(
                     children: [

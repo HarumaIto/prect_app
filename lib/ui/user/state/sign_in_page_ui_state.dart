@@ -14,8 +14,8 @@ class SignInPageUiState with _$SignInPageUiState {
   }) = _SignInPageUiState;
 }
 
-final signInPageUiStateProvider = StateNotifierProvider
-    .autoDispose<SignInPageStateNotifier, SignInPageUiState>((ref) {
+final signInPageUiStateProvider = StateNotifierProvider.autoDispose<
+    SignInPageStateNotifier, SignInPageUiState>((ref) {
   final authenticationUseCase = ref.watch(authenticationUseCaseProvider);
   return SignInPageStateNotifier(authenticationUseCase);
 });
@@ -37,10 +37,7 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageUiState> {
   }
 
   Future logIn() async {
-    await state.authenticationUseCase.onLogIn(
-        state.email,
-        state.password
-    );
+    await state.authenticationUseCase.onLogIn(state.email, state.password);
   }
 
   Future updateFCMToken() async {

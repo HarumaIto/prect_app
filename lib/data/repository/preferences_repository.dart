@@ -24,35 +24,43 @@ class PreferencesRepository {
 
     for (var key in PrefKey.values) {
       switch (key.type) {
-        case PrefType.BOOLEAN: {
-          _dataSource.writeBool(key, key.initialValue);
-          break;
-        }
-        case PrefType.STRING: {
-          _dataSource.writeString(key, key.initialValue);
-          break;
-        }
-        case PrefType.INTEGER:{
-          _dataSource.writeInt(key, key.initialValue);
-          break;
-        }
-        case PrefType.DOUBLE: {
-          _dataSource.writeDouble(key, key.initialValue);
-        }
+        case PrefType.BOOLEAN:
+          {
+            _dataSource.writeBool(key, key.initialValue);
+            break;
+          }
+        case PrefType.STRING:
+          {
+            _dataSource.writeString(key, key.initialValue);
+            break;
+          }
+        case PrefType.INTEGER:
+          {
+            _dataSource.writeInt(key, key.initialValue);
+            break;
+          }
+        case PrefType.DOUBLE:
+          {
+            _dataSource.writeDouble(key, key.initialValue);
+          }
       }
     }
   }
 
   /** Read **/
   // 登録済みか
-  Future<bool> readRegistered() async => await _dataSource.readBool(PrefKey.REGISTERED);
+  Future<bool> readRegistered() async =>
+      await _dataSource.readBool(PrefKey.REGISTERED);
 
   // メールアドレス
-  Future<String> readEmail() async => await _dataSource.readString(PrefKey.EMAIL);
+  Future<String> readEmail() async =>
+      await _dataSource.readString(PrefKey.EMAIL);
 
   // MongodbのID
-  Future<String> readUserId() async => await _dataSource.readString(PrefKey.USER_ID);
-  Future<String> readDeviceId() async => await _dataSource.readString(PrefKey.DEVICE_ID);
+  Future<String> readUserId() async =>
+      await _dataSource.readString(PrefKey.USER_ID);
+  Future<String> readDeviceId() async =>
+      await _dataSource.readString(PrefKey.DEVICE_ID);
 
   // location
   Future<PlaceLocation> readPlaceLocation() async {
@@ -95,7 +103,8 @@ class PreferencesRepository {
   }
 
   // location
-  Future writePlaceLocation(String cityName, double latitude, double longitude) async {
+  Future writePlaceLocation(
+      String cityName, double latitude, double longitude) async {
     await _dataSource.writeString(PrefKey.CITY_NAME, cityName);
     await _dataSource.writeDouble(PrefKey.LATITUDE, latitude);
     await _dataSource.writeDouble(PrefKey.LONGITUDE, longitude);
@@ -103,9 +112,11 @@ class PreferencesRepository {
 
   // デバイス設定
   Future writeDeviceSettings(PrectDeviceSettings deviceSettings) async {
-    await _dataSource.writeString(PrefKey.DEVICE_ID, deviceSettings.newDeviceId);
+    await _dataSource.writeString(
+        PrefKey.DEVICE_ID, deviceSettings.newDeviceId);
     await _dataSource.writeString(PrefKey.WIFI_SSID, deviceSettings.wifiSSID);
-    await _dataSource.writeString(PrefKey.WIFI_PASSWORD, deviceSettings.wifiPassword);
+    await _dataSource.writeString(
+        PrefKey.WIFI_PASSWORD, deviceSettings.wifiPassword);
     await _dataSource.writeInt(PrefKey.SLEEP_TIME, deviceSettings.sleepTime);
   }
 

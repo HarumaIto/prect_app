@@ -6,22 +6,22 @@ import 'package:prect/data/model/weather.dart';
 import 'package:prect/data/repository/preferences_repository.dart';
 import 'package:prect/data/repository/weather_repository.dart';
 
-final fetchLocationWeatherUseCaseProvider = Provider<LocationWeatherUseCase>((ref) {
+final fetchLocationWeatherUseCaseProvider =
+    Provider<LocationWeatherUseCase>((ref) {
   final prefRepository = ref.watch(preferencesRepositoryProvider);
   final weatherRepository = ref.watch(weatherRepositoryProvider);
 
   return LocationWeatherUseCase(
-    preferencesRepository: prefRepository,
-    weatherRepository: weatherRepository
-  );
+      preferencesRepository: prefRepository,
+      weatherRepository: weatherRepository);
 });
 
 class LocationWeatherUseCase {
   LocationWeatherUseCase({
     required PreferencesRepository preferencesRepository,
     required WeatherRepository weatherRepository,
-  }) : _preferencesRepository = preferencesRepository,
-       _weatherRepository = weatherRepository;
+  })  : _preferencesRepository = preferencesRepository,
+        _weatherRepository = weatherRepository;
 
   final PreferencesRepository _preferencesRepository;
   final WeatherRepository _weatherRepository;
@@ -78,8 +78,6 @@ class LocationWeatherUseCase {
 
   Future<Weather> _getWeather(PlaceLocation placeLocation) async {
     return await _weatherRepository.fetchWeather(
-        placeLocation.latitude!,
-        placeLocation.longitude!
-    );
+        placeLocation.latitude!, placeLocation.longitude!);
   }
 }

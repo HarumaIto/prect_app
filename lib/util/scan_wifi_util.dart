@@ -38,7 +38,8 @@ class ScanWifiUtil {
   void _startListeningToScannedResults() async {
     final can = await WiFiScan.instance.canStartScan(askPermissions: true);
     if (can == CanStartScan.yes) {
-      _subscription = WiFiScan.instance.onScannedResultsAvailable.listen((results) {
+      _subscription =
+          WiFiScan.instance.onScannedResultsAvailable.listen((results) {
         print(results);
         for (var result in results) {
           final knownWifi = wifiNames.indexWhere((w) => w == result.venueName);
@@ -55,9 +56,7 @@ class ScanWifiUtil {
 
   // streamを更新する
   void _pushState() {
-    _stateStreamController.add(
-      wifiNames
-    );
+    _stateStreamController.add(wifiNames);
   }
 
   void dispose() async {

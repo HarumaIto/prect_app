@@ -16,13 +16,14 @@ class AccountCreatePageUiState with _$AccountCreatePageUiState {
   }) = _AccountCreatePageUiState;
 }
 
-final accountCreatePageUiStateProvider = StateNotifierProvider
-    .autoDispose<AccountCreatePageStateNotifier, AccountCreatePageUiState>((ref) {
+final accountCreatePageUiStateProvider = StateNotifierProvider.autoDispose<
+    AccountCreatePageStateNotifier, AccountCreatePageUiState>((ref) {
   final authenticationUseCase = ref.watch(authenticationUseCaseProvider);
   return AccountCreatePageStateNotifier(authenticationUseCase);
 });
 
-class AccountCreatePageStateNotifier extends StateNotifier<AccountCreatePageUiState> {
+class AccountCreatePageStateNotifier
+    extends StateNotifier<AccountCreatePageUiState> {
   AccountCreatePageStateNotifier(AuthenticationUseCase useCase)
       : super(AccountCreatePageUiState(authenticationUseCase: useCase));
 
@@ -47,9 +48,7 @@ class AccountCreatePageStateNotifier extends StateNotifier<AccountCreatePageUiSt
   }
 
   Future createAccount() async {
-    await state.authenticationUseCase.createAccount(
-        state.email,
-        state.password
-    );
+    await state.authenticationUseCase
+        .createAccount(state.email, state.password);
   }
 }

@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 /// 番号付きリストを作成する
 /// WidgetかStringのどちらか1つ引数に入れてください
 class NumberList extends StatelessWidget {
-  const NumberList({
-    Key? key,
-    required this.context,
-    this.children,
-    this.texts,
-    this.isUseZero = false}) : super(key: key);
+  const NumberList(
+      {Key? key,
+      required this.context,
+      this.children,
+      this.texts,
+      this.isUseZero = false})
+      : super(key: key);
 
   final BuildContext context;
   final List<Widget>? children;
@@ -16,54 +17,57 @@ class NumberList extends StatelessWidget {
   final bool isUseZero;
 
   Widget createNumberList() {
-    final double pereWidth = MediaQuery.of(context).size.width/1.5;
-    List<Widget> result = [const SizedBox(height: 12,)];
+    final double pereWidth = MediaQuery.of(context).size.width / 1.5;
+    List<Widget> result = [
+      const SizedBox(
+        height: 12,
+      )
+    ];
 
-    if(children != null) {
-      for (int i=0; i<children!.length; i++) {
-        String index = isUseZero ? i.toString() : (i+1).toString();
-        result.add(
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                children: [
-                  Text(
-                    '$index.',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  children![i],
-                ],
+    if (children != null) {
+      for (int i = 0; i < children!.length; i++) {
+        String index = isUseZero ? i.toString() : (i + 1).toString();
+        result.add(Container(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Row(
+            children: [
+              Text(
+                '$index.',
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-            )
-        );
+              const SizedBox(
+                width: 4,
+              ),
+              children![i],
+            ],
+          ),
+        ));
       }
     } else {
-      for (int i=0; i<texts!.length; i++) {
-        String index = isUseZero ? i.toString() : (i+1).toString();
-        result.add(
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '$index.',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  SizedBox(
-                    width: pereWidth,
-                    child: Text(texts![i], softWrap: true,),
-                  )
-                ],
+      for (int i = 0; i < texts!.length; i++) {
+        String index = isUseZero ? i.toString() : (i + 1).toString();
+        result.add(Container(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$index.',
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-            )
-        );
+              const SizedBox(
+                width: 4,
+              ),
+              SizedBox(
+                width: pereWidth,
+                child: Text(
+                  texts![i],
+                  softWrap: true,
+                ),
+              )
+            ],
+          ),
+        ));
       }
     }
 

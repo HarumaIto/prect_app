@@ -22,7 +22,9 @@ final myAppUiStateProvider = FutureProvider.autoDispose<bool>((ref) async {
 });
 
 class MyApp extends HookConsumerWidget {
-  const MyApp({Key? key,}) : super(key: key);
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,8 +41,7 @@ class MyApp extends HookConsumerWidget {
         data: (value) {
           if (value) {
             return const MainPage();
-          }
-          else {
+          } else {
             return const SingInPage();
           }
         },

@@ -17,8 +17,8 @@ class AuthenticationUseCase {
   AuthenticationUseCase({
     required MongodbRepository mongodbRepository,
     required PreferencesRepository preferencesRepository,
-  }) : _mongodbRepository = mongodbRepository,
-       _preferencesRepository = preferencesRepository;
+  })  : _mongodbRepository = mongodbRepository,
+        _preferencesRepository = preferencesRepository;
 
   final MongodbRepository _mongodbRepository;
   final PreferencesRepository _preferencesRepository;

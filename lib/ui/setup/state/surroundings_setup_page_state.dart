@@ -11,9 +11,8 @@ class SurroundingsSetupPageState with _$SurroundingsSetupPageState {
   }) = _SurroundingsSetupPageState;
 }
 
-final surroundingsSetupPageProvider =
-    StateNotifierProvider.autoDispose<SurroundingsSetupPageNotifier,
-        SurroundingsSetupPageState>((ref) {
+final surroundingsSetupPageProvider = StateNotifierProvider.autoDispose<
+    SurroundingsSetupPageNotifier, SurroundingsSetupPageState>((ref) {
   return SurroundingsSetupPageNotifier();
 });
 

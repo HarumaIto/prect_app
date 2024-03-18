@@ -8,7 +8,9 @@ final weatherRepositoryProvider = Provider<WeatherRepository>((ref) {
 });
 
 class WeatherRepository {
-  const WeatherRepository(this._client,);
+  const WeatherRepository(
+    this._client,
+  );
 
   final WeatherApiClient _client;
 

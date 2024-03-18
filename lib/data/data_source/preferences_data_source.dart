@@ -1,11 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum PrefType {
-  BOOLEAN,
-  STRING,
-  INTEGER,
-  DOUBLE
-}
+enum PrefType { BOOLEAN, STRING, INTEGER, DOUBLE }
 
 enum PrefKey {
   // 登録済みか
