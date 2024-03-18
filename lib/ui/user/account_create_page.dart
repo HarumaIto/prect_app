@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:prect/ui/main/main_page.dart';
 import 'package:prect/ui/user/state/account_create_page_ui_state.dart';
 
 import 'sign_in_page.dart';
 
 class AccountCreatePage extends ConsumerWidget {
+  const AccountCreatePage({super.key});
 
   void _transitionMainPage(BuildContext context) {
     // 画面遷移 + ログイン画面を廃棄
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) {
-          return MainPage();
+          return const MainPage();
         })
     );
   }
@@ -28,11 +29,11 @@ class AccountCreatePage extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'ようこそ！',
                   style: TextStyle(fontSize: 32),
                 ),
-                SizedBox(height: 16,),
+                const SizedBox(height: 16,),
                 Form(
                   child: Column(
                     children: [
@@ -104,10 +105,10 @@ class AccountCreatePage extends ConsumerWidget {
                           })
                       );
                     },
-                    child: Row(
+                    child: const Row(
                       children: [
                         Spacer(),
-                        const Text('サインインはこちら'),
+                        Text('サインインはこちら'),
                         Icon(Icons.arrow_forward_outlined),
                       ],
                     ),

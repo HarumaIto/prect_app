@@ -37,7 +37,7 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageUiState> {
   }
 
   Future logIn() async {
-     await state.authenticationUseCase.onLogIn(
+    await state.authenticationUseCase.onLogIn(
         state.email,
         state.password
     );
