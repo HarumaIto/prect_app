@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BleSetupPageState {
   BleUseCase get bleUseCase => throw _privateConstructorUsedError;
+  SpiffsData get spiffsData => throw _privateConstructorUsedError;
   String get remoteId => throw _privateConstructorUsedError;
   List<BluetoothService> get services => throw _privateConstructorUsedError;
 
@@ -33,8 +34,11 @@ abstract class $BleSetupPageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {BleUseCase bleUseCase,
+      SpiffsData spiffsData,
       String remoteId,
       List<BluetoothService> services});
+
+  $SpiffsDataCopyWith<$Res> get spiffsData;
 }
 
 /// @nodoc
@@ -51,6 +55,7 @@ class _$BleSetupPageStateCopyWithImpl<$Res, $Val extends BleSetupPageState>
   @override
   $Res call({
     Object? bleUseCase = null,
+    Object? spiffsData = null,
     Object? remoteId = null,
     Object? services = null,
   }) {
@@ -59,6 +64,10 @@ class _$BleSetupPageStateCopyWithImpl<$Res, $Val extends BleSetupPageState>
           ? _value.bleUseCase
           : bleUseCase // ignore: cast_nullable_to_non_nullable
               as BleUseCase,
+      spiffsData: null == spiffsData
+          ? _value.spiffsData
+          : spiffsData // ignore: cast_nullable_to_non_nullable
+              as SpiffsData,
       remoteId: null == remoteId
           ? _value.remoteId
           : remoteId // ignore: cast_nullable_to_non_nullable
@@ -68,6 +77,14 @@ class _$BleSetupPageStateCopyWithImpl<$Res, $Val extends BleSetupPageState>
           : services // ignore: cast_nullable_to_non_nullable
               as List<BluetoothService>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SpiffsDataCopyWith<$Res> get spiffsData {
+    return $SpiffsDataCopyWith<$Res>(_value.spiffsData, (value) {
+      return _then(_value.copyWith(spiffsData: value) as $Val);
+    });
   }
 }
 
@@ -81,8 +98,12 @@ abstract class _$$_BleSetupPageStateCopyWith<$Res>
   @useResult
   $Res call(
       {BleUseCase bleUseCase,
+      SpiffsData spiffsData,
       String remoteId,
       List<BluetoothService> services});
+
+  @override
+  $SpiffsDataCopyWith<$Res> get spiffsData;
 }
 
 /// @nodoc
@@ -97,6 +118,7 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bleUseCase = null,
+    Object? spiffsData = null,
     Object? remoteId = null,
     Object? services = null,
   }) {
@@ -105,6 +127,10 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
           ? _value.bleUseCase
           : bleUseCase // ignore: cast_nullable_to_non_nullable
               as BleUseCase,
+      spiffsData: null == spiffsData
+          ? _value.spiffsData
+          : spiffsData // ignore: cast_nullable_to_non_nullable
+              as SpiffsData,
       remoteId: null == remoteId
           ? _value.remoteId
           : remoteId // ignore: cast_nullable_to_non_nullable
@@ -122,12 +148,15 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
 class _$_BleSetupPageState implements _BleSetupPageState {
   _$_BleSetupPageState(
       {required this.bleUseCase,
+      required this.spiffsData,
       this.remoteId = '',
       final List<BluetoothService> services = const []})
       : _services = services;
 
   @override
   final BleUseCase bleUseCase;
+  @override
+  final SpiffsData spiffsData;
   @override
   @JsonKey()
   final String remoteId;
@@ -142,7 +171,7 @@ class _$_BleSetupPageState implements _BleSetupPageState {
 
   @override
   String toString() {
-    return 'BleSetupPageState(bleUseCase: $bleUseCase, remoteId: $remoteId, services: $services)';
+    return 'BleSetupPageState(bleUseCase: $bleUseCase, spiffsData: $spiffsData, remoteId: $remoteId, services: $services)';
   }
 
   @override
@@ -152,13 +181,15 @@ class _$_BleSetupPageState implements _BleSetupPageState {
             other is _$_BleSetupPageState &&
             (identical(other.bleUseCase, bleUseCase) ||
                 other.bleUseCase == bleUseCase) &&
+            (identical(other.spiffsData, spiffsData) ||
+                other.spiffsData == spiffsData) &&
             (identical(other.remoteId, remoteId) ||
                 other.remoteId == remoteId) &&
             const DeepCollectionEquality().equals(other._services, _services));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, bleUseCase, remoteId,
+  int get hashCode => Object.hash(runtimeType, bleUseCase, spiffsData, remoteId,
       const DeepCollectionEquality().hash(_services));
 
   @JsonKey(ignore: true)
@@ -172,11 +203,14 @@ class _$_BleSetupPageState implements _BleSetupPageState {
 abstract class _BleSetupPageState implements BleSetupPageState {
   factory _BleSetupPageState(
       {required final BleUseCase bleUseCase,
+      required final SpiffsData spiffsData,
       final String remoteId,
       final List<BluetoothService> services}) = _$_BleSetupPageState;
 
   @override
   BleUseCase get bleUseCase;
+  @override
+  SpiffsData get spiffsData;
   @override
   String get remoteId;
   @override

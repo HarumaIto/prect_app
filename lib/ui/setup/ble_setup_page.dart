@@ -39,12 +39,21 @@ class BleSetupPage extends HookConsumerWidget {
               child: const Text('接続する'),
             ),
             const SizedBox(height: 20),
+            const Text('SPIFFSデータ'),
+            Text('DeviceId: ${uiState.spiffsData.deviceId}'),
+            Text('WifiSSID: ${uiState.spiffsData.wifiSsid}'),
+            Text('WifiPassword: ${uiState.spiffsData.wifiPassword}'),
+            Text('SleepTime: ${uiState.spiffsData.sleepTime}'),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: uiState.services.isNotEmpty
                   ? () async {
                       final response = await uiState.bleUseCase
                           .readCharacteristic(
                               uiState.services.first.characteristics.first);
+                      ref
+                          .read(bleSetupPageProvider.notifier)
+                          .setSpiffsData(response);
                       print(response);
                     }
                   : null,
