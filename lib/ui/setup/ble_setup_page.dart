@@ -13,6 +13,7 @@ class BleSetupPage extends HookConsumerWidget {
     // first, check if bluetooth is supported by your hardware
     // Note: The platform is initialized on the first call to any FlutterBluePlus method.
     if (await FlutterBluePlus.isSupported == false) {
+      if (!context.mounted) return;
       DefaultSnackbar.show(context, 'Bluetoothがサポートされていません');
       return;
     }
@@ -33,21 +34,45 @@ class BleSetupPage extends HookConsumerWidget {
 
     subscription.cancel();
 
+    if (!context.mounted) return;
     DefaultSnackbar.show(context, 'Bluetoothを有効化されています');
+  }
+
+  void bleConnect(BluetoothDevice device) async {
+    // listen for disconnection
+    var subscription =
+        device.connectionState.listen((BluetoothConnectionState state) async {
+      if (state == BluetoothConnectionState.disconnected) {
+        // 1. typically, start a periodic timer that tries to
+        //    reconnect, or just call connect() again right now
+        // 2. you must always re-discover services after disconnection!
+        debugPrint(
+            '${device.disconnectReason?.code} ${device.disconnectReason?.description}');
+      }
+    });
+
+    device.cancelWhenDisconnected(subscription, delayed: true, next: true);
+
+    await device.connect();
+
+    subscription.cancel();
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final device = useState<BluetoothDevice?>(null);
-
     void bleScan() async {
       var subscription = FlutterBluePlus.onScanResults.listen(
         (results) {
           if (results.isNotEmpty) {
             ScanResult r = results.last; // the most recently found device
-            device.value = r.device;
             debugPrint(
                 '${r.device.remoteId}: "${r.advertisementData.advName}" found!');
+
+            // サービスUUIDを設定して検索しているので、見つかった時点で自身のデバイスなので接続する
+            bleConnect(r.device);
+            DefaultSnackbar.show(context, '${r.device.advName}に接続しました');
+
+            FlutterBluePlus.stopScan();
           }
         },
         onError: (e) => debugPrint(e),
@@ -67,29 +92,6 @@ class BleSetupPage extends HookConsumerWidget {
       await FlutterBluePlus.isScanning.where((val) => val == false).first;
     }
 
-    void bleConnect() async {
-      // listen for disconnection
-      var subscription = device.value!.connectionState
-          .listen((BluetoothConnectionState state) async {
-        if (state == BluetoothConnectionState.disconnected) {
-          // 1. typically, start a periodic timer that tries to
-          //    reconnect, or just call connect() again right now
-          // 2. you must always re-discover services after disconnection!
-          debugPrint(
-              '${device.value!.disconnectReason?.code} ${device.value!.disconnectReason?.description}');
-        }
-      });
-
-      device.value!
-          .cancelWhenDisconnected(subscription, delayed: true, next: true);
-
-      await device.value!.connect();
-
-      subscription.cancel();
-
-      DefaultSnackbar.show(context, '接続しました');
-    }
-
     useEffect(() {
       bleInit(context);
       return null;
@@ -106,10 +108,6 @@ class BleSetupPage extends HookConsumerWidget {
           children: [
             ElevatedButton(
               onPressed: bleScan,
-              child: const Text('Bluetoothデバイスを検索する'),
-            ),
-            ElevatedButton(
-              onPressed: device.value != null ? bleConnect : null,
               child: const Text('接続する'),
             ),
           ],
