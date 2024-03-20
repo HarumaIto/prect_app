@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:prect/ui/setup/state/ble_setup_page_state.dart';
 
 final bleUseCaseProvider = Provider<BleUseCase>((ref) => BleUseCase(ref: ref));
 
@@ -76,7 +77,28 @@ class BleUseCase {
     device.cancelWhenDisconnected(subscription, delayed: true, next: true);
 
     await device.connect();
+    ref.read(bleSetupPageProvider.notifier).setBleDevice(
+          device.remoteId.str,
+          await device.discoverServices(),
+        );
 
     subscription.cancel();
+  }
+
+  Future<String> readCharacteristic(
+      BluetoothCharacteristic characteristic) async {
+    if (characteristic.properties.read) {
+      final response = await characteristic.read();
+      print(response);
+      return String.fromCharCodes(response);
+    }
+    return '';
+  }
+
+  void writeCharacteristic(
+      BluetoothCharacteristic characteristic, List<int> value) async {
+    if (characteristic.properties.write) {
+      await characteristic.write(value);
+    }
   }
 }

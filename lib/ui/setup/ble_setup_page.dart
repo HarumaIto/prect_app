@@ -10,6 +10,8 @@ class BleSetupPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final uiState = ref.watch(bleSetupPageProvider);
 
+    print(uiState.services.toString());
+
     useEffect(() {
       uiState.bleUseCase.bleInit();
       return null;
@@ -24,9 +26,29 @@ class BleSetupPage extends HookConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Text('状態'),
+            const SizedBox(height: 20),
+            if (uiState.remoteId.isEmpty)
+              const Text('未接続')
+            else
+              const Text('接続済み'),
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: uiState.bleUseCase.bleScan,
+              onPressed:
+                  uiState.remoteId.isEmpty ? uiState.bleUseCase.bleScan : null,
               child: const Text('接続する'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: uiState.services.isNotEmpty
+                  ? () async {
+                      final response = await uiState.bleUseCase
+                          .readCharacteristic(
+                              uiState.services.first.characteristics.first);
+                      print(response);
+                    }
+                  : null,
+              child: const Text('読み取る'),
             ),
           ],
         ),

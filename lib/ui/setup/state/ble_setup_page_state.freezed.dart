@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BleSetupPageState {
   BleUseCase get bleUseCase => throw _privateConstructorUsedError;
-  BleDevice get bleDevice => throw _privateConstructorUsedError;
+  String get remoteId => throw _privateConstructorUsedError;
+  List<BluetoothService> get services => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BleSetupPageStateCopyWith<BleSetupPageState> get copyWith =>
@@ -30,9 +31,10 @@ abstract class $BleSetupPageStateCopyWith<$Res> {
           BleSetupPageState value, $Res Function(BleSetupPageState) then) =
       _$BleSetupPageStateCopyWithImpl<$Res, BleSetupPageState>;
   @useResult
-  $Res call({BleUseCase bleUseCase, BleDevice bleDevice});
-
-  $BleDeviceCopyWith<$Res> get bleDevice;
+  $Res call(
+      {BleUseCase bleUseCase,
+      String remoteId,
+      List<BluetoothService> services});
 }
 
 /// @nodoc
@@ -49,26 +51,23 @@ class _$BleSetupPageStateCopyWithImpl<$Res, $Val extends BleSetupPageState>
   @override
   $Res call({
     Object? bleUseCase = null,
-    Object? bleDevice = null,
+    Object? remoteId = null,
+    Object? services = null,
   }) {
     return _then(_value.copyWith(
       bleUseCase: null == bleUseCase
           ? _value.bleUseCase
           : bleUseCase // ignore: cast_nullable_to_non_nullable
               as BleUseCase,
-      bleDevice: null == bleDevice
-          ? _value.bleDevice
-          : bleDevice // ignore: cast_nullable_to_non_nullable
-              as BleDevice,
+      remoteId: null == remoteId
+          ? _value.remoteId
+          : remoteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      services: null == services
+          ? _value.services
+          : services // ignore: cast_nullable_to_non_nullable
+              as List<BluetoothService>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BleDeviceCopyWith<$Res> get bleDevice {
-    return $BleDeviceCopyWith<$Res>(_value.bleDevice, (value) {
-      return _then(_value.copyWith(bleDevice: value) as $Val);
-    });
   }
 }
 
@@ -80,10 +79,10 @@ abstract class _$$_BleSetupPageStateCopyWith<$Res>
       __$$_BleSetupPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BleUseCase bleUseCase, BleDevice bleDevice});
-
-  @override
-  $BleDeviceCopyWith<$Res> get bleDevice;
+  $Res call(
+      {BleUseCase bleUseCase,
+      String remoteId,
+      List<BluetoothService> services});
 }
 
 /// @nodoc
@@ -98,17 +97,22 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bleUseCase = null,
-    Object? bleDevice = null,
+    Object? remoteId = null,
+    Object? services = null,
   }) {
     return _then(_$_BleSetupPageState(
       bleUseCase: null == bleUseCase
           ? _value.bleUseCase
           : bleUseCase // ignore: cast_nullable_to_non_nullable
               as BleUseCase,
-      bleDevice: null == bleDevice
-          ? _value.bleDevice
-          : bleDevice // ignore: cast_nullable_to_non_nullable
-              as BleDevice,
+      remoteId: null == remoteId
+          ? _value.remoteId
+          : remoteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      services: null == services
+          ? _value._services
+          : services // ignore: cast_nullable_to_non_nullable
+              as List<BluetoothService>,
     ));
   }
 }
@@ -116,16 +120,29 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_BleSetupPageState implements _BleSetupPageState {
-  _$_BleSetupPageState({required this.bleUseCase, required this.bleDevice});
+  _$_BleSetupPageState(
+      {required this.bleUseCase,
+      this.remoteId = '',
+      final List<BluetoothService> services = const []})
+      : _services = services;
 
   @override
   final BleUseCase bleUseCase;
   @override
-  final BleDevice bleDevice;
+  @JsonKey()
+  final String remoteId;
+  final List<BluetoothService> _services;
+  @override
+  @JsonKey()
+  List<BluetoothService> get services {
+    if (_services is EqualUnmodifiableListView) return _services;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_services);
+  }
 
   @override
   String toString() {
-    return 'BleSetupPageState(bleUseCase: $bleUseCase, bleDevice: $bleDevice)';
+    return 'BleSetupPageState(bleUseCase: $bleUseCase, remoteId: $remoteId, services: $services)';
   }
 
   @override
@@ -135,12 +152,14 @@ class _$_BleSetupPageState implements _BleSetupPageState {
             other is _$_BleSetupPageState &&
             (identical(other.bleUseCase, bleUseCase) ||
                 other.bleUseCase == bleUseCase) &&
-            (identical(other.bleDevice, bleDevice) ||
-                other.bleDevice == bleDevice));
+            (identical(other.remoteId, remoteId) ||
+                other.remoteId == remoteId) &&
+            const DeepCollectionEquality().equals(other._services, _services));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, bleUseCase, bleDevice);
+  int get hashCode => Object.hash(runtimeType, bleUseCase, remoteId,
+      const DeepCollectionEquality().hash(_services));
 
   @JsonKey(ignore: true)
   @override
@@ -153,12 +172,15 @@ class _$_BleSetupPageState implements _BleSetupPageState {
 abstract class _BleSetupPageState implements BleSetupPageState {
   factory _BleSetupPageState(
       {required final BleUseCase bleUseCase,
-      required final BleDevice bleDevice}) = _$_BleSetupPageState;
+      final String remoteId,
+      final List<BluetoothService> services}) = _$_BleSetupPageState;
 
   @override
   BleUseCase get bleUseCase;
   @override
-  BleDevice get bleDevice;
+  String get remoteId;
+  @override
+  List<BluetoothService> get services;
   @override
   @JsonKey(ignore: true)
   _$$_BleSetupPageStateCopyWith<_$_BleSetupPageState> get copyWith =>
