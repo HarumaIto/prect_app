@@ -1,5 +1,5 @@
 import 'package:prect/data/model/weather.dart';
-import 'package:prect/ui/setup/ble_setup_page.dart';
+import 'package:prect/ui/setup/ble/ble_setup_page.dart';
 import 'package:prect/ui/setup/setup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:prect/data/model/prect_device.dart';

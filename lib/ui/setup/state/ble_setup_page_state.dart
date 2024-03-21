@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:prect/data/model/spiffs_data.dart';
 import 'package:prect/domain/ble_use_case.dart';
+import 'package:prect/domain/register_device_use_case.dart';
 
 //dart run build_runner build
 
@@ -12,6 +13,7 @@ part 'ble_setup_page_state.freezed.dart';
 class BleSetupPageState with _$BleSetupPageState {
   factory BleSetupPageState({
     required BleUseCase bleUseCase,
+    required RegisterDeviceUseCase registerDeviceUseCase,
     required SpiffsData spiffsData,
     @Default('') String remoteId,
     @Default([]) List<BluetoothService> services,
@@ -19,9 +21,11 @@ class BleSetupPageState with _$BleSetupPageState {
 }
 
 class BleSetupPageNotifier extends StateNotifier<BleSetupPageState> {
-  BleSetupPageNotifier(BleUseCase bleUseCase, SpiffsData spiffsData)
+  BleSetupPageNotifier(BleUseCase bleUseCase,
+      RegisterDeviceUseCase registerDeviceUseCase, SpiffsData spiffsData)
       : super(BleSetupPageState(
           spiffsData: spiffsData,
+          registerDeviceUseCase: registerDeviceUseCase,
           bleUseCase: bleUseCase,
         ));
 
@@ -33,16 +37,20 @@ class BleSetupPageNotifier extends StateNotifier<BleSetupPageState> {
   }
 
   // Bluetoothのcharacteristicsをそのまま渡す
-  void setSpiffsData(String readValue) {
+  SpiffsData setSpiffsData(String readValue) {
     final splits = readValue.split(',');
-    if (splits.length < 3) return;
-    final spiffsData = SpiffsData(
-      deviceId: splits[0],
+    if (splits.length < 3) return state.spiffsData;
+    final newSpiffsData = state.spiffsData.copyWith(
       wifiSsid: splits[1],
       wifiPassword: splits[2],
       sleepTime:
           splits[3].isNotEmpty ? int.parse(splits[3].substring(0, 2)) : 0,
     );
+    state = state.copyWith(spiffsData: newSpiffsData);
+    return newSpiffsData;
+  }
+
+  void updateSpiffsData(SpiffsData spiffsData) {
     state = state.copyWith(spiffsData: spiffsData);
   }
 }
@@ -51,6 +59,8 @@ final bleSetupPageProvider =
     StateNotifierProvider.autoDispose<BleSetupPageNotifier, BleSetupPageState>(
   (ref) {
     final bleUseCase = ref.watch(bleUseCaseProvider);
-    return BleSetupPageNotifier(bleUseCase, SpiffsData());
+    final registerDeviceUseCase = ref.watch(registerDeviceUseCaseProvider);
+    return BleSetupPageNotifier(
+        bleUseCase, registerDeviceUseCase, SpiffsData());
   },
 );

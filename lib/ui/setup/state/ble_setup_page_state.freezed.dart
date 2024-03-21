@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BleSetupPageState {
   BleUseCase get bleUseCase => throw _privateConstructorUsedError;
+  RegisterDeviceUseCase get registerDeviceUseCase =>
+      throw _privateConstructorUsedError;
   SpiffsData get spiffsData => throw _privateConstructorUsedError;
   String get remoteId => throw _privateConstructorUsedError;
   List<BluetoothService> get services => throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ abstract class $BleSetupPageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {BleUseCase bleUseCase,
+      RegisterDeviceUseCase registerDeviceUseCase,
       SpiffsData spiffsData,
       String remoteId,
       List<BluetoothService> services});
@@ -55,6 +58,7 @@ class _$BleSetupPageStateCopyWithImpl<$Res, $Val extends BleSetupPageState>
   @override
   $Res call({
     Object? bleUseCase = null,
+    Object? registerDeviceUseCase = null,
     Object? spiffsData = null,
     Object? remoteId = null,
     Object? services = null,
@@ -64,6 +68,10 @@ class _$BleSetupPageStateCopyWithImpl<$Res, $Val extends BleSetupPageState>
           ? _value.bleUseCase
           : bleUseCase // ignore: cast_nullable_to_non_nullable
               as BleUseCase,
+      registerDeviceUseCase: null == registerDeviceUseCase
+          ? _value.registerDeviceUseCase
+          : registerDeviceUseCase // ignore: cast_nullable_to_non_nullable
+              as RegisterDeviceUseCase,
       spiffsData: null == spiffsData
           ? _value.spiffsData
           : spiffsData // ignore: cast_nullable_to_non_nullable
@@ -98,6 +106,7 @@ abstract class _$$_BleSetupPageStateCopyWith<$Res>
   @useResult
   $Res call(
       {BleUseCase bleUseCase,
+      RegisterDeviceUseCase registerDeviceUseCase,
       SpiffsData spiffsData,
       String remoteId,
       List<BluetoothService> services});
@@ -118,6 +127,7 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bleUseCase = null,
+    Object? registerDeviceUseCase = null,
     Object? spiffsData = null,
     Object? remoteId = null,
     Object? services = null,
@@ -127,6 +137,10 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
           ? _value.bleUseCase
           : bleUseCase // ignore: cast_nullable_to_non_nullable
               as BleUseCase,
+      registerDeviceUseCase: null == registerDeviceUseCase
+          ? _value.registerDeviceUseCase
+          : registerDeviceUseCase // ignore: cast_nullable_to_non_nullable
+              as RegisterDeviceUseCase,
       spiffsData: null == spiffsData
           ? _value.spiffsData
           : spiffsData // ignore: cast_nullable_to_non_nullable
@@ -148,6 +162,7 @@ class __$$_BleSetupPageStateCopyWithImpl<$Res>
 class _$_BleSetupPageState implements _BleSetupPageState {
   _$_BleSetupPageState(
       {required this.bleUseCase,
+      required this.registerDeviceUseCase,
       required this.spiffsData,
       this.remoteId = '',
       final List<BluetoothService> services = const []})
@@ -155,6 +170,8 @@ class _$_BleSetupPageState implements _BleSetupPageState {
 
   @override
   final BleUseCase bleUseCase;
+  @override
+  final RegisterDeviceUseCase registerDeviceUseCase;
   @override
   final SpiffsData spiffsData;
   @override
@@ -171,7 +188,7 @@ class _$_BleSetupPageState implements _BleSetupPageState {
 
   @override
   String toString() {
-    return 'BleSetupPageState(bleUseCase: $bleUseCase, spiffsData: $spiffsData, remoteId: $remoteId, services: $services)';
+    return 'BleSetupPageState(bleUseCase: $bleUseCase, registerDeviceUseCase: $registerDeviceUseCase, spiffsData: $spiffsData, remoteId: $remoteId, services: $services)';
   }
 
   @override
@@ -181,6 +198,8 @@ class _$_BleSetupPageState implements _BleSetupPageState {
             other is _$_BleSetupPageState &&
             (identical(other.bleUseCase, bleUseCase) ||
                 other.bleUseCase == bleUseCase) &&
+            (identical(other.registerDeviceUseCase, registerDeviceUseCase) ||
+                other.registerDeviceUseCase == registerDeviceUseCase) &&
             (identical(other.spiffsData, spiffsData) ||
                 other.spiffsData == spiffsData) &&
             (identical(other.remoteId, remoteId) ||
@@ -189,7 +208,12 @@ class _$_BleSetupPageState implements _BleSetupPageState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, bleUseCase, spiffsData, remoteId,
+  int get hashCode => Object.hash(
+      runtimeType,
+      bleUseCase,
+      registerDeviceUseCase,
+      spiffsData,
+      remoteId,
       const DeepCollectionEquality().hash(_services));
 
   @JsonKey(ignore: true)
@@ -203,12 +227,15 @@ class _$_BleSetupPageState implements _BleSetupPageState {
 abstract class _BleSetupPageState implements BleSetupPageState {
   factory _BleSetupPageState(
       {required final BleUseCase bleUseCase,
+      required final RegisterDeviceUseCase registerDeviceUseCase,
       required final SpiffsData spiffsData,
       final String remoteId,
       final List<BluetoothService> services}) = _$_BleSetupPageState;
 
   @override
   BleUseCase get bleUseCase;
+  @override
+  RegisterDeviceUseCase get registerDeviceUseCase;
   @override
   SpiffsData get spiffsData;
   @override
