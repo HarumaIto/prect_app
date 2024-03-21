@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -89,16 +90,20 @@ class BleUseCase {
       BluetoothCharacteristic characteristic) async {
     if (characteristic.properties.read) {
       final response = await characteristic.read();
-      print(response);
       return String.fromCharCodes(response);
     }
     return '';
   }
 
   void writeCharacteristic(
-      BluetoothCharacteristic characteristic, List<int> value) async {
+      BluetoothCharacteristic characteristic, String value) async {
     if (characteristic.properties.write) {
-      await characteristic.write(value);
+      final utf8Codes = utf8.encode(value);
+      try {
+        await characteristic.write(utf8Codes);
+      } catch (e) {
+        print(e);
+      }
     }
   }
 }

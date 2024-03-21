@@ -35,11 +35,13 @@ class BleSetupPageNotifier extends StateNotifier<BleSetupPageState> {
   // Bluetoothのcharacteristicsをそのまま渡す
   void setSpiffsData(String readValue) {
     final splits = readValue.split(',');
+    if (splits.length < 3) return;
     final spiffsData = SpiffsData(
       deviceId: splits[0],
       wifiSsid: splits[1],
       wifiPassword: splits[2],
-      sleepTime: splits[3].isNotEmpty ? int.parse(splits[3]) : 0,
+      sleepTime:
+          splits[3].isNotEmpty ? int.parse(splits[3].substring(0, 2)) : 0,
     );
     state = state.copyWith(spiffsData: spiffsData);
   }
