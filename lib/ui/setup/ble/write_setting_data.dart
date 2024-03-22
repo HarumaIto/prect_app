@@ -60,7 +60,7 @@ class WriteSettingData extends HookConsumerWidget {
                 '${uiState.spiffsData.deviceId},${wifiSsidController.text},${wifiPasswordController.text},${sleepTimeController.text}');
             uiState.registerDeviceUseCase
                 .addUserIdForDevice(uiState.spiffsData.deviceId);
-            uiState.registerDeviceUseCase.registerDeviceSettings();
+            uiState.registerDeviceUseCase.registerDeviceSettings(uiState);
           },
           child: const Text('書き込み'),
         ),

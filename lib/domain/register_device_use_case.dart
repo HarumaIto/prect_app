@@ -44,9 +44,7 @@ class RegisterDeviceUseCase {
     );
   }
 
-  Future registerDeviceSettings() async {
-    final pageState = ref.read(bleSetupPageProvider);
-
+  Future registerDeviceSettings(final pageState) async {
     await prefRepository.connect();
     await prefRepository.writeDeviceSettings(PrectDeviceSettings(
       newDeviceId: pageState.spiffsData.deviceId,
