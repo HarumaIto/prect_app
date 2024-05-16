@@ -1,5 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:prect/domain/authentication_use_case.dart';
 
 part 'sign_in_page_ui_state.freezed.dart';
@@ -14,8 +14,8 @@ class SignInPageUiState with _$SignInPageUiState {
   }) = _SignInPageUiState;
 }
 
-final signInPageUiStateProvider = StateNotifierProvider
-    .autoDispose<SignInPageStateNotifier, SignInPageUiState>((ref) {
+final signInPageUiStateProvider = StateNotifierProvider.autoDispose<
+    SignInPageStateNotifier, SignInPageUiState>((ref) {
   final authenticationUseCase = ref.watch(authenticationUseCaseProvider);
   return SignInPageStateNotifier(authenticationUseCase);
 });
@@ -37,10 +37,7 @@ class SignInPageStateNotifier extends StateNotifier<SignInPageUiState> {
   }
 
   Future logIn() async {
-     await state.authenticationUseCase.onLogIn(
-        state.email,
-        state.password
-    );
+    await state.authenticationUseCase.onLogIn(state.email, state.password);
   }
 
   Future updateFCMToken() async {

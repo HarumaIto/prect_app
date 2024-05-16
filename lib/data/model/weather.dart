@@ -15,10 +15,9 @@ class Weather with _$Weather {
     final weather = json['weather'].first;
     final main = json['main'];
     return Weather(
-      main: weather['main'],
-      description: weather['description'],
-      temp: main['temp'].toInt(),
-      humidity: main['humidity'].toInt()
-    );
+        main: weather['main'],
+        description: weather['description'],
+        temp: main['temp'].toInt(),
+        humidity: main['humidity'].toInt());
   }
 }

@@ -1,4 +1,4 @@
-import 'package:prect/ui/common_widget/primary_button.dart';
+import 'package:prect/ui/components/primary_button.dart';
 import 'package:prect/ui/main/main_page.dart';
 import 'package:prect/ui/setup/plant/plant_setup_page.dart';
 import 'package:prect/ui/setup/state/setup_page_state.dart';
@@ -29,7 +29,9 @@ class SetupPage extends HookConsumerWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Column(
@@ -97,11 +99,12 @@ class SetupPage extends HookConsumerWidget {
                     ),
                   );
                 } else {
-                  Navigator.push(
+                  Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const MainPage(),
                     ),
+                    (_) => false,
                   );
                 }
               },

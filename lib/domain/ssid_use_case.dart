@@ -3,7 +3,8 @@ import 'package:network_info_plus/network_info_plus.dart';
 
 import 'package:prect/ui/setup/state/device_setup_page_state.dart';
 
-final ssidUseCaseProvider = Provider<SsidUseCase>((ref) => SsidUseCase(ref: ref));
+final ssidUseCaseProvider =
+    Provider<SsidUseCase>((ref) => SsidUseCase(ref: ref));
 
 class SsidUseCase {
   SsidUseCase({
@@ -24,7 +25,7 @@ class SsidUseCase {
     final info = NetworkInfo();
 
     final wifiName = await info.getWifiName();
-    final ssid = wifiName!.substring(1, wifiName.length-1);
+    final ssid = wifiName!.substring(1, wifiName.length - 1);
 
     _ref.read(deviceSetupPageProvider.notifier).wifiSsid = ssid;
   }

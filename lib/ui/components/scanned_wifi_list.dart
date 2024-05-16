@@ -40,24 +40,20 @@ class ScannedWifiListState extends State<ScannedWifiList> {
           }
 
           return SizedBox(
-            height: 200,
-            child: Column(
-              children: [
-                Flexible(
-                  child: ListView(
-                    children: nameList
-                        .map((wifiName) {
-                      return ListTile(
-                        title: Text(wifiName),
-                      );
-                    }
-                    ).toList(),
+              height: 200,
+              child: Column(
+                children: [
+                  Flexible(
+                    child: ListView(
+                      children: nameList.map((wifiName) {
+                        return ListTile(
+                          title: Text(wifiName),
+                        );
+                      }).toList(),
+                    ),
                   ),
-                ),
-              ],
-            )
-          );
-        }
-    );
+                ],
+              ));
+        });
   }
 }

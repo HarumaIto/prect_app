@@ -10,8 +10,9 @@ class SetupPageState with _$SetupPageState {
   }) = _SetupPageState;
 }
 
-final setupPageProvider = StateNotifierProvider
-    .autoDispose<SetupPageStateNotifier, SetupPageState>((ref) {
+final setupPageProvider =
+    StateNotifierProvider.autoDispose<SetupPageStateNotifier, SetupPageState>(
+        (ref) {
   return SetupPageStateNotifier();
 });
 
@@ -19,8 +20,6 @@ class SetupPageStateNotifier extends StateNotifier<SetupPageState> {
   SetupPageStateNotifier() : super(SetupPageState());
 
   set activeStep(int newValue) {
-    state = state.copyWith(
-      activeStep: newValue
-    );
+    state = state.copyWith(activeStep: newValue);
   }
 }

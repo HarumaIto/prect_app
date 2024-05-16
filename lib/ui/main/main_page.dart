@@ -1,4 +1,5 @@
 import 'package:prect/data/model/weather.dart';
+import 'package:prect/ui/setup/ble/ble_setup_page.dart';
 import 'package:prect/ui/setup/setup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:prect/data/model/prect_device.dart';
@@ -151,15 +152,23 @@ class MainPage extends HookConsumerWidget {
   }
 
   Widget addDevice(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       children: [
+        ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const BleSetupPage()),
+              );
+            },
+            child: const Text('BLEで追加')),
         ElevatedButton(
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SetupPage()),
+              MaterialPageRoute(builder: (context) => const SetupPage()),
             );
           },
           child: const Text('セットアップ'),

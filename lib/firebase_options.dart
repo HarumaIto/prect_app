@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '723723390327',
     projectId: 'prect-2fc33',
     storageBucket: 'prect-2fc33.appspot.com',
-    iosClientId: '723723390327-b3ffncfl1irtjk1cb3tguo0g9ii74c5o.apps.googleusercontent.com',
+    iosClientId:
+        '723723390327-b3ffncfl1irtjk1cb3tguo0g9ii74c5o.apps.googleusercontent.com',
     iosBundleId: 'com.iruma.prect',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '723723390327',
     projectId: 'prect-2fc33',
     storageBucket: 'prect-2fc33.appspot.com',
-    iosClientId: '723723390327-b3ffncfl1irtjk1cb3tguo0g9ii74c5o.apps.googleusercontent.com',
+    iosClientId:
+        '723723390327-b3ffncfl1irtjk1cb3tguo0g9ii74c5o.apps.googleusercontent.com',
     iosBundleId: 'com.iruma.prect',
   );
 }

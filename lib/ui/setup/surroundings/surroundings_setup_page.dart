@@ -1,4 +1,4 @@
-import 'package:prect/ui/common_widget/primary_button.dart';
+import 'package:prect/ui/components/primary_button.dart';
 import 'package:prect/ui/setup/setup_page.dart';
 import 'package:prect/ui/setup/state/setup_page_state.dart';
 import 'package:prect/ui/setup/state/surroundings_setup_page_state.dart';

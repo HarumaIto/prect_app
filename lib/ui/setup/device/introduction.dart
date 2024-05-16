@@ -1,5 +1,5 @@
-import 'package:prect/ui/common_widget/number_list.dart';
-import 'package:prect/ui/common_widget/page_inner_title.dart';
+import 'package:prect/ui/components/number_list.dart';
+import 'package:prect/ui/components/page_inner_title.dart';
 import 'package:flutter/material.dart';
 
 class Introduction extends StatelessWidget {

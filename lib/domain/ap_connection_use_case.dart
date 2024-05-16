@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:prect/ui/setup/state/device_setup_page_state.dart';
 
-final apConnectionUseCaseProvider = Provider<ApConnectionUseCase>(
-        (ref) => ApConnectionUseCase(ref: ref));
+final apConnectionUseCaseProvider =
+    Provider<ApConnectionUseCase>((ref) => ApConnectionUseCase(ref: ref));
 
 class ApConnectionUseCase {
   ApConnectionUseCase({
@@ -23,7 +23,8 @@ class ApConnectionUseCase {
     switch (call.method) {
       case 'configureAccessPointResult':
         print('Configure access point result: ${call.arguments}');
-        _ref.read(deviceSetupPageProvider.notifier).connectivity = call.arguments;
+        _ref.read(deviceSetupPageProvider.notifier).connectivity =
+            call.arguments;
         break;
       default:
         print('Unknowm method ${call.method}');

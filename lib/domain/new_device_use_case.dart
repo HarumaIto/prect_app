@@ -12,8 +12,7 @@ final newDeviceUseCaseProvider = Provider<NewDeviceUseCase>((ref) {
   return NewDeviceUseCase(
       ref: ref,
       prefRepository: prefRepository,
-      mongodbRepository: mongodbRepository
-  );
+      mongodbRepository: mongodbRepository);
 });
 
 class NewDeviceUseCase {
@@ -21,9 +20,9 @@ class NewDeviceUseCase {
     required Ref ref,
     required PreferencesRepository prefRepository,
     required MongodbRepository mongodbRepository,
-  }) : _ref = ref,
-       _preferencesRepository = prefRepository,
-       _mongodbRepository = mongodbRepository;
+  })  : _ref = ref,
+        _preferencesRepository = prefRepository,
+        _mongodbRepository = mongodbRepository;
 
   final Ref _ref;
   final PreferencesRepository _preferencesRepository;

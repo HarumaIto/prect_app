@@ -1,18 +1,18 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:prect/ui/user/state/sign_in_page_ui_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prect/ui/main/main_page.dart';
 
 import 'account_create_page.dart';
 
 class SingInPage extends ConsumerWidget {
+  const SingInPage({super.key});
+
   void _transitionMainPage(BuildContext context) {
     // 画面遷移 + ログイン画面を廃棄
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) {
-          return MainPage();
-        })
-    );
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
+      return const MainPage();
+    }));
   }
 
   @override
@@ -27,22 +27,27 @@ class SingInPage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'ようこそ！',
                 style: TextStyle(fontSize: 32),
               ),
-              SizedBox(height: 16,),
+              const SizedBox(
+                height: 16,
+              ),
               Form(
                 child: Column(
                   children: [
                     TextFormField(
                       decoration: const InputDecoration(labelText: 'メールアドレス'),
                       textInputAction: TextInputAction.next,
+                      controller:
+                          TextEditingController(text: 'itoharm@gmail.com'),
                       onChanged: (value) {
                         stateNotifier.email = value;
                       },
                     ),
                     TextFormField(
+                      controller: TextEditingController(text: 'Haruman860'),
                       decoration: InputDecoration(
                         labelText: 'パスワード',
                         suffix: IconButton(
@@ -78,16 +83,15 @@ class SingInPage extends ConsumerWidget {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) {
-                          return AccountCreatePage();
-                        })
-                    );
+                    Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (context) {
+                      return const AccountCreatePage();
+                    }));
                   },
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(Icons.arrow_back),
-                      const Text('アカウントを作成する'),
+                      Text('アカウントを作成する'),
                       Spacer(),
                     ],
                   ),

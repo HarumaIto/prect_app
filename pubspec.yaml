@@ -62,6 +62,7 @@ dependencies:
   geolocator: ^9.0.2
   geocoding: ^2.1.0
 
+  flutter_blue_plus: ^1.31.16
   network_info_plus: ^3.0.1
   wifi_scan: ^0.4.0+1
 

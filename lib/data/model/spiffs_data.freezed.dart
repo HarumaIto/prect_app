@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'prect_device_settings.dart';
+part of 'spiffs_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,34 +15,31 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PrectDeviceSettings {
-  String get newDeviceId => throw _privateConstructorUsedError;
-  String get wifiSSID => throw _privateConstructorUsedError;
+mixin _$SpiffsData {
+  String get deviceId => throw _privateConstructorUsedError;
+  String get wifiSsid => throw _privateConstructorUsedError;
   String get wifiPassword => throw _privateConstructorUsedError;
   int get sleepTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PrectDeviceSettingsCopyWith<PrectDeviceSettings> get copyWith =>
+  $SpiffsDataCopyWith<SpiffsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PrectDeviceSettingsCopyWith<$Res> {
-  factory $PrectDeviceSettingsCopyWith(
-          PrectDeviceSettings value, $Res Function(PrectDeviceSettings) then) =
-      _$PrectDeviceSettingsCopyWithImpl<$Res, PrectDeviceSettings>;
+abstract class $SpiffsDataCopyWith<$Res> {
+  factory $SpiffsDataCopyWith(
+          SpiffsData value, $Res Function(SpiffsData) then) =
+      _$SpiffsDataCopyWithImpl<$Res, SpiffsData>;
   @useResult
   $Res call(
-      {String newDeviceId,
-      String wifiSSID,
-      String wifiPassword,
-      int sleepTime});
+      {String deviceId, String wifiSsid, String wifiPassword, int sleepTime});
 }
 
 /// @nodoc
-class _$PrectDeviceSettingsCopyWithImpl<$Res, $Val extends PrectDeviceSettings>
-    implements $PrectDeviceSettingsCopyWith<$Res> {
-  _$PrectDeviceSettingsCopyWithImpl(this._value, this._then);
+class _$SpiffsDataCopyWithImpl<$Res, $Val extends SpiffsData>
+    implements $SpiffsDataCopyWith<$Res> {
+  _$SpiffsDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -52,19 +49,19 @@ class _$PrectDeviceSettingsCopyWithImpl<$Res, $Val extends PrectDeviceSettings>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newDeviceId = null,
-    Object? wifiSSID = null,
+    Object? deviceId = null,
+    Object? wifiSsid = null,
     Object? wifiPassword = null,
     Object? sleepTime = null,
   }) {
     return _then(_value.copyWith(
-      newDeviceId: null == newDeviceId
-          ? _value.newDeviceId
-          : newDeviceId // ignore: cast_nullable_to_non_nullable
+      deviceId: null == deviceId
+          ? _value.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
               as String,
-      wifiSSID: null == wifiSSID
-          ? _value.wifiSSID
-          : wifiSSID // ignore: cast_nullable_to_non_nullable
+      wifiSsid: null == wifiSsid
+          ? _value.wifiSsid
+          : wifiSsid // ignore: cast_nullable_to_non_nullable
               as String,
       wifiPassword: null == wifiPassword
           ? _value.wifiPassword
@@ -79,44 +76,41 @@ class _$PrectDeviceSettingsCopyWithImpl<$Res, $Val extends PrectDeviceSettings>
 }
 
 /// @nodoc
-abstract class _$$_PrectDeviceSettingsCopyWith<$Res>
-    implements $PrectDeviceSettingsCopyWith<$Res> {
-  factory _$$_PrectDeviceSettingsCopyWith(_$_PrectDeviceSettings value,
-          $Res Function(_$_PrectDeviceSettings) then) =
-      __$$_PrectDeviceSettingsCopyWithImpl<$Res>;
+abstract class _$$_SpiffsDataCopyWith<$Res>
+    implements $SpiffsDataCopyWith<$Res> {
+  factory _$$_SpiffsDataCopyWith(
+          _$_SpiffsData value, $Res Function(_$_SpiffsData) then) =
+      __$$_SpiffsDataCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String newDeviceId,
-      String wifiSSID,
-      String wifiPassword,
-      int sleepTime});
+      {String deviceId, String wifiSsid, String wifiPassword, int sleepTime});
 }
 
 /// @nodoc
-class __$$_PrectDeviceSettingsCopyWithImpl<$Res>
-    extends _$PrectDeviceSettingsCopyWithImpl<$Res, _$_PrectDeviceSettings>
-    implements _$$_PrectDeviceSettingsCopyWith<$Res> {
-  __$$_PrectDeviceSettingsCopyWithImpl(_$_PrectDeviceSettings _value,
-      $Res Function(_$_PrectDeviceSettings) _then)
+class __$$_SpiffsDataCopyWithImpl<$Res>
+    extends _$SpiffsDataCopyWithImpl<$Res, _$_SpiffsData>
+    implements _$$_SpiffsDataCopyWith<$Res> {
+  __$$_SpiffsDataCopyWithImpl(
+      _$_SpiffsData _value, $Res Function(_$_SpiffsData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newDeviceId = null,
-    Object? wifiSSID = null,
+    Object? deviceId = null,
+    Object? wifiSsid = null,
     Object? wifiPassword = null,
     Object? sleepTime = null,
   }) {
-    return _then(_$_PrectDeviceSettings(
-      newDeviceId: null == newDeviceId
-          ? _value.newDeviceId
-          : newDeviceId // ignore: cast_nullable_to_non_nullable
+    return _then(_$_SpiffsData(
+      deviceId: null == deviceId
+          ? _value.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
               as String,
-      wifiSSID: null == wifiSSID
-          ? _value.wifiSSID
-          : wifiSSID // ignore: cast_nullable_to_non_nullable
+      wifiSsid: null == wifiSsid
+          ? _value.wifiSsid
+          : wifiSsid // ignore: cast_nullable_to_non_nullable
               as String,
       wifiPassword: null == wifiPassword
           ? _value.wifiPassword
@@ -132,19 +126,19 @@ class __$$_PrectDeviceSettingsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PrectDeviceSettings implements _PrectDeviceSettings {
-  _$_PrectDeviceSettings(
-      {this.newDeviceId = '',
-      this.wifiSSID = '',
+class _$_SpiffsData implements _SpiffsData {
+  _$_SpiffsData(
+      {this.deviceId = '',
+      this.wifiSsid = '',
       this.wifiPassword = '',
-      this.sleepTime = 60});
+      this.sleepTime = 0});
 
   @override
   @JsonKey()
-  final String newDeviceId;
+  final String deviceId;
   @override
   @JsonKey()
-  final String wifiSSID;
+  final String wifiSsid;
   @override
   @JsonKey()
   final String wifiPassword;
@@ -154,18 +148,18 @@ class _$_PrectDeviceSettings implements _PrectDeviceSettings {
 
   @override
   String toString() {
-    return 'PrectDeviceSettings(newDeviceId: $newDeviceId, wifiSSID: $wifiSSID, wifiPassword: $wifiPassword, sleepTime: $sleepTime)';
+    return 'SpiffsData(deviceId: $deviceId, wifiSsid: $wifiSsid, wifiPassword: $wifiPassword, sleepTime: $sleepTime)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PrectDeviceSettings &&
-            (identical(other.newDeviceId, newDeviceId) ||
-                other.newDeviceId == newDeviceId) &&
-            (identical(other.wifiSSID, wifiSSID) ||
-                other.wifiSSID == wifiSSID) &&
+            other is _$_SpiffsData &&
+            (identical(other.deviceId, deviceId) ||
+                other.deviceId == deviceId) &&
+            (identical(other.wifiSsid, wifiSsid) ||
+                other.wifiSsid == wifiSsid) &&
             (identical(other.wifiPassword, wifiPassword) ||
                 other.wifiPassword == wifiPassword) &&
             (identical(other.sleepTime, sleepTime) ||
@@ -174,33 +168,32 @@ class _$_PrectDeviceSettings implements _PrectDeviceSettings {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, newDeviceId, wifiSSID, wifiPassword, sleepTime);
+      Object.hash(runtimeType, deviceId, wifiSsid, wifiPassword, sleepTime);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PrectDeviceSettingsCopyWith<_$_PrectDeviceSettings> get copyWith =>
-      __$$_PrectDeviceSettingsCopyWithImpl<_$_PrectDeviceSettings>(
-          this, _$identity);
+  _$$_SpiffsDataCopyWith<_$_SpiffsData> get copyWith =>
+      __$$_SpiffsDataCopyWithImpl<_$_SpiffsData>(this, _$identity);
 }
 
-abstract class _PrectDeviceSettings implements PrectDeviceSettings {
-  factory _PrectDeviceSettings(
-      {final String newDeviceId,
-      final String wifiSSID,
+abstract class _SpiffsData implements SpiffsData {
+  factory _SpiffsData(
+      {final String deviceId,
+      final String wifiSsid,
       final String wifiPassword,
-      final int sleepTime}) = _$_PrectDeviceSettings;
+      final int sleepTime}) = _$_SpiffsData;
 
   @override
-  String get newDeviceId;
+  String get deviceId;
   @override
-  String get wifiSSID;
+  String get wifiSsid;
   @override
   String get wifiPassword;
   @override
   int get sleepTime;
   @override
   @JsonKey(ignore: true)
-  _$$_PrectDeviceSettingsCopyWith<_$_PrectDeviceSettings> get copyWith =>
+  _$$_SpiffsDataCopyWith<_$_SpiffsData> get copyWith =>
       throw _privateConstructorUsedError;
 }

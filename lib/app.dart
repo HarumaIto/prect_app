@@ -1,10 +1,10 @@
+import 'package:prect/ui/user/sign_in_page.dart';
 import 'package:prect/ui/user/state/sign_in_page_ui_state.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'data/repository/preferences_repository.dart';
 import 'ui/main/main_page.dart';
-import 'ui/user/account_create_page.dart';
 
 final myAppUiStateProvider = FutureProvider.autoDispose<bool>((ref) async {
   final prefRepository = ref.watch(preferencesRepositoryProvider);
@@ -22,7 +22,9 @@ final myAppUiStateProvider = FutureProvider.autoDispose<bool>((ref) async {
 });
 
 class MyApp extends HookConsumerWidget {
-  MyApp({Key? key,}) : super(key: key);
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,14 +40,15 @@ class MyApp extends HookConsumerWidget {
       home: uiState.when(
         data: (value) {
           if (value) {
-            return MainPage();
+            return const MainPage();
+          } else {
+            return const SingInPage();
           }
-          else return AccountCreatePage();
         },
         error: (error, stack) => Center(
           child: Text('エラーが発生しました\napp.dart\n${error.toString()}'),
         ),
-        loading: () => SizedBox(),
+        loading: () => const SizedBox(),
       ),
     );
   }
